@@ -142,7 +142,7 @@ export default function LogGamePage() {
                   onChange={() => togglePlayer(p.id)}
                   className="h-4 w-4 rounded border-[#E5E7EB] text-[#C8A24D] focus:ring-[#C8A24D]"
                 />
-                <SymbolIcon symbol={p.symbol} size="sm" gold={p.symbol === "AXE"} />
+                <SymbolIcon symbol={p.symbol} gold={p.symbol === "AXE"} />
                 <span className="font-medium text-[#111315]">{p.displayName}</span>
               </label>
             ))}

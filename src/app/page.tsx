@@ -145,7 +145,7 @@ export default function Home() {
                     <tr key={p.id} className="border-b border-[#E5E7EB] hover:bg-[#F8F9FA]">
                       <td className="px-4 py-3">
                         <span className="flex items-center gap-2 font-medium text-[#111315]">
-                          <SymbolIcon symbol={p.symbol} size="sm" gold={p.symbol === "AXE"} />
+                          <SymbolIcon symbol={p.symbol} gold={p.symbol === "AXE"} />
                           {p.displayName.split(" ")[0]}
                         </span>
                       </td>
