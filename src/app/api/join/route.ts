@@ -26,7 +26,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    if (!symbol || !PLAYER_SYMBOLS.includes(symbol as Symbol)) {
+    if (!symbol || !PLAYER_SYMBOLS.includes((String(symbol).toUpperCase() as Symbol))) {
       return NextResponse.json(
         { error: "Please select a symbol from the list." },
         { status: 400 }
@@ -41,12 +41,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const passwordHash = bcrypt.hashSync(password, 10);
+    const passwordHash = await bcrypt.hash(password, 10);
     const player = createPlayer({
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       city: city?.trim(),
-      symbol: symbol as Symbol,
+      symbol: String(symbol).toUpperCase() as Symbol,
       passwordHash,
       role: "PLAYER",
     });
