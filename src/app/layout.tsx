@@ -4,6 +4,9 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { getSession } from "@/lib/auth";
 
+// Required by Cloudflare next-on-pages: run everything on the Edge runtime
+export const runtime = "edge";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
