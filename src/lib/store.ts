@@ -112,15 +112,16 @@ export function createGame(data: {
 }
 
 // Seed founder so you can log in immediately (password: founder)
-import bcrypt from "bcryptjs";
+// Use a precomputed hash so Edge runtime doesn't run bcrypt at module load (avoids crypto issues).
+const FOUNDER_PASSWORD_HASH =
+  "$2b$10$LdeNwxcRarYvCJ5S94ZCx.yWOgbOOXtQBveXcr2Xnrs/o2GXzMNXa";
 if (players.size === 0) {
-  const hash = bcrypt.hashSync("founder", 10);
   createPlayer({
     firstName: "Mosh",
     lastName: "Zrihen",
     city: "San Francisco",
     symbol: "AXE",
-    passwordHash: hash,
+    passwordHash: FOUNDER_PASSWORD_HASH,
     role: "FOUNDER",
   });
 }
