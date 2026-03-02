@@ -11,6 +11,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+**Demo login:** Log in as **Mosh Zrihen** with password **founder** to test Log Game and see the header change to "Log out".
+
 ## Deploy to Cloudflare Pages
 
 1. Push this repo to GitHub (see setup guide).
