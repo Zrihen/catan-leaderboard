@@ -33,6 +33,7 @@ export interface Game {
 }
 
 const players = new Map<string, Player>();
+// Keyed by lowercase display name for case-insensitive lookups
 const playersByDisplayName = new Map<string, Player>();
 const games: Game[] = [];
 
@@ -45,7 +46,8 @@ export function getPlayerById(id: string): Player | undefined {
 }
 
 export function getPlayerByDisplayName(displayName: string): Player | undefined {
-  return playersByDisplayName.get(displayName.trim());
+  const key = displayName.trim().toLowerCase();
+  return playersByDisplayName.get(key);
 }
 
 export function getAllPlayers(): Player[] {
@@ -62,7 +64,8 @@ export function createPlayer(data: {
 }): Player {
   const id = uuid();
   const displayName = `${data.firstName.trim()} ${data.lastName.trim()}`.trim();
-  if (playersByDisplayName.has(displayName)) {
+  const key = displayName.toLowerCase();
+  if (playersByDisplayName.has(key)) {
     throw new Error("A player with this name already exists.");
   }
   const player: Player = {
@@ -77,7 +80,7 @@ export function createPlayer(data: {
     createdAt: new Date(),
   };
   players.set(id, player);
-  playersByDisplayName.set(displayName, player);
+  playersByDisplayName.set(key, player);
   return player;
 }
 
